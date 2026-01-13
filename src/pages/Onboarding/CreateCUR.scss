@@ -1,0 +1,163 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.create-cur {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  &__step {
+    @include flex-start;
+    gap: $spacing-md;
+  }
+
+  &__step-number {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    // background: lighten($primary-color, 35%);
+    color: $primary-color;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__text {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    margin-bottom: $spacing-sm;
+
+    a {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+
+    span {
+      font-weight: 600;
+      color: $text-primary;
+    }
+
+    i {
+      font-style: italic;
+    }
+  }
+
+  /* Card containers */
+  &__card {
+    background: $bg-secondary;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-lg;
+    padding: $spacing-md;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__card-inner {
+    background: $bg-primary;
+    border: 1px solid $border-light;
+    border-radius: $border-radius;
+    padding: $spacing-md;
+    margin-bottom: $spacing-md;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: $spacing-md;
+  }
+
+  &__label {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $text-secondary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__hint {
+    font-size: $font-size-sm;
+    color: $text-disabled;
+    margin-top: $spacing-xs;
+  }
+
+  /* Inputs */
+  &__input {
+    width: 100%;
+    padding: $spacing-sm;
+    font-size: $font-size-sm;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background: $bg-secondary;
+    color: $text-secondary;
+  }
+
+  &__checkbox-row {
+    @include flex-start;
+    gap: $spacing-sm;
+    margin-top: $spacing-sm;
+
+    span {
+      font-size: $font-size-sm;
+      font-weight: 500;
+      color: $text-secondary;
+    }
+  }
+
+  &__option {
+    @include flex-start;
+    gap: $spacing-sm;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid $border-light;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    p:first-child {
+      font-weight: 500;
+      color: $text-primary;
+    }
+
+    p:last-child {
+      font-size: $font-size-sm;
+      color: $text-secondary;
+    }
+  }
+
+  /* Section divider */
+  &__divider {
+    margin-top: $spacing-lg;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $border-light;
+  }
+
+  /* Highlighted option */
+  &__highlight {
+    @include flex-start;
+    gap: $spacing-sm;
+    // background: lighten($primary-color, 42%);
+    // border: 1px solid lighten($primary-color, 30%);
+    border-radius: $border-radius;
+    padding: $spacing-sm;
+
+    span {
+      font-weight: 500;
+      color: $text-primary;
+    }
+  }
+
+  /* Select */
+  &__select {
+    width: 100%;
+    padding: $spacing-sm;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background: $bg-primary;
+    font-size: $font-size-sm;
+  }
+}

@@ -1,0 +1,51 @@
+.user-edit-page {
+  // Same styles as UserCreate.scss
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+
+    .breadcrumb-link {
+      background: none;
+      border: none;
+      color: #1890ff;
+      cursor: pointer;
+      padding: 0;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .breadcrumb-separator {
+      color: #999;
+    }
+
+    .breadcrumb-current {
+      color: #666;
+    }
+  }
+
+  .page-header {
+    margin-bottom: 24px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  .loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+}

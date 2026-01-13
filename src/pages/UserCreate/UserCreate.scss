@@ -1,0 +1,133 @@
+// src/pages/UserCreate/UserCreate.scss
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.user-create-page {
+  .loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;     // or 100vh if you want full screen center
+  }
+  .loader{
+    color: $primary-color;
+  }
+  .breadcrumb {
+    @include flex-start;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-sm;
+    
+    .breadcrumb-link {
+      @include button-reset;
+      color: $primary-color;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    .breadcrumb-separator {
+      color: $text-disabled;
+    }
+    
+    .breadcrumb-current {
+      color: $text-secondary;
+    }
+  }
+
+  .page-header {
+    margin-bottom: $spacing-lg;
+    
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: $text-primary;
+    }
+  }
+
+  .user-form {
+    background: $bg-primary;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow;
+    padding: $spacing-xl;
+
+    .form-content {
+      max-width: 800px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-lg;
+      margin-bottom: $spacing-md;
+      
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-notice {
+      margin: $spacing-lg 0;
+      
+      .notice-box {
+        background-color: #fff7e6;
+        border: 1px solid #ffd591;
+        border-radius: $border-radius;
+        padding: $spacing-md;
+        color: $text-secondary;
+        font-size: $font-size-sm;
+        
+        strong {
+          color: $warning-color;
+        }
+      }
+    }
+
+    .form-actions {
+      @include flex-start;
+      gap: $spacing-md;
+      margin-top: $spacing-xl;
+      padding-top: $spacing-lg;
+      border-top: 1px solid $border-light;
+
+      .btn-cancel {
+        padding: 10px 24px;
+        background-color: transparent;
+        color: $text-secondary;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        font-size: $font-size-base;
+        font-weight: 500;
+        cursor: pointer;
+        transition: $transition-base;
+        
+        &:hover {
+          border-color: $text-secondary;
+          color: $text-primary;
+        }
+      }
+
+      .btn-submit {
+        padding: 10px 24px;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: $border-radius;
+        font-size: $font-size-base;
+        font-weight: 500;
+        cursor: pointer;
+        transition: $transition-base;
+        
+        &:hover {
+          background-color: $primary-dark;
+        }
+        
+        &:disabled {
+          background-color: $border-color;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

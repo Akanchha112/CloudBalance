@@ -1,0 +1,109 @@
+@import "../../styles/variables"; // If you store variables separately
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: $bg-primary;
+  font-family: $font-family;
+  position: relative;
+
+  .LoginPage {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $bg-primary;
+    padding: $spacing-xl $spacing-lg;
+    border-radius: $border-radius-lg;
+    // box-shadow: $shadow;
+  }
+
+  img {
+    width: 180px;
+    margin-bottom: $spacing-lg;
+    object-fit: contain;
+  }
+
+  input {
+    width: 380px !important;
+    padding: $spacing-sm $spacing-md;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+    color: $text-primary;
+    outline: none;
+    margin-bottom: $spacing-md;
+    transition: $transition-base;
+
+    &:focus {
+      border-color: $info-color;
+    }
+
+    &::placeholder {
+      color: $text-disabled;
+    }
+  }
+
+  .forgot-link {
+    width: 380px;
+    text-align: right;
+    font-size: $font-size-sm;
+    color: $primary-color;
+    cursor: pointer;
+    margin-top: -$spacing-sm;
+    margin-bottom: $spacing-md;
+
+    &:hover {
+      color: $primary-dark;
+    }
+  }
+
+  button {
+    width: 380px;
+    padding: $spacing-sm $spacing-md;
+    background-color: $primary-color;
+    color: $bg-primary;
+    font-size: $font-size-lg;
+    font-weight: 500;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    margin-top: $spacing-sm;
+    transition: $transition-base;
+
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+
+  /* Footer styling */
+  .login-footer {
+    width: 100%;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    padding: 0 $spacing-xl;
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-sm;
+    color: $text-secondary;
+
+    a {
+      color: $primary-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $primary-dark;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.sidebar {
+  width: 250px;
+  background-color: $bg-primary;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid $border-light;
+  overflow-y: auto;
+  @include scrollbar;
+
+  .sidebar-logo {
+    padding: $spacing-lg;
+    // border-bottom: 1px solid $border-light;
+    
+    h2 {
+      font-size: $font-size-xl;
+      color: $primary-color;
+      font-weight: 600;
+    }
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-md 0;
+    
+    .sidebar-link {
+      @include flex-start;
+      padding: 12px $spacing-lg;
+      color: $text-secondary;
+      text-decoration: none;
+      transition: $transition-base;
+      gap: $spacing-md;
+      border-left: 3px solid transparent;
+      
+      .sidebar-icon {
+        font-size: 18px;
+      }
+      
+      .sidebar-text {
+        font-size: $font-size-base;
+        font-weight: 500;
+      }
+      
+      &:hover {
+        background-color: rgba(91, 143, 249, 0.05);
+        color: $primary-color;
+      }
+      
+      &.active {
+        background-color: $sidebar-active;
+        color: $primary-color;
+        border-left-color: $primary-color;
+        font-weight: 600;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+// src/components/Input/Input.scss
+@import '../../styles/variables';
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+
+  .input-label {
+    font-size: $font-size-base;
+    font-weight: 500;
+    color: $text-primary;
+    
+    .required {
+      color: $danger-color;
+      margin-left: 2px;
+    }
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+    transition: $transition-base;
+    background-color: $bg-primary;
+    
+    &::placeholder {
+      color: $text-disabled;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba(91, 143, 249, 0.1);
+    }
+    
+    &:disabled {
+      background-color: $bg-secondary;
+      cursor: not-allowed;
+      color: $text-disabled;
+    }
+    
+    &.error {
+      border-color: $danger-color;
+      
+      &:focus {
+        box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1);
+      }
+    }
+  }
+
+  .input-error {
+    font-size: $font-size-sm;
+    color: $danger-color;
+  }
+}
