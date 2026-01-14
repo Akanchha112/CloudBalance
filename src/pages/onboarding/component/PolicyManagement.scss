@@ -1,0 +1,66 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.policy-management {
+  background-color: $bg-primary;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  box-shadow: $shadow-sm;
+
+  &__step {
+    display: flex;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  &__content {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: flex-start;
+    max-width: 480px;
+  }
+
+  &__text {
+    font-family: $font-family;
+    font-size: $font-size-base;
+    color: $text-primary;
+    line-height: 1.6;
+  }
+
+  &__link {
+    color: $info-color;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__image {
+    border: 1px solid $border-light;
+    border-radius: $border-radius;
+    background-color: $bg-secondary;
+    overflow: hidden;
+    max-width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+  }
+
+  &__final-step {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: center;
+  }
+}

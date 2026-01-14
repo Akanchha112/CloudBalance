@@ -1,0 +1,18 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.onboarding {
+  padding: 2.25rem; // p-9
+  height: 85vh;
+  overflow-y: auto;
+
+  // Optional: if you already have a scrollbar mixin
+  @include scrollbar();
+
+  &__footer {
+    padding-top: 2.5rem; // pt-10
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

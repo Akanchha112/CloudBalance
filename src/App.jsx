@@ -11,6 +11,7 @@ import ErrorFallback from "./components/ErrorFallback/ErrorFallback";
 import { ToastContainer } from "react-toastify";
 import RoleProtectedRoute from "./routes/RoleProtectedRoute";
 import { ROLES } from "./constants/roles";
+import CostExplorer from "./pages/CostExplorer/CostExplorer";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -59,7 +60,7 @@ function App() {
 
               <Route path="cost-explorer" element={
                 <RoleProtectedRoute allowedRoles={[ROLES.ADMIN, ROLES.READONLY,ROLES.CUSTOMER]}>
-                   <div>cost explorer</div>
+                   <CostExplorer/>
                  </RoleProtectedRoute>}>
               </Route>
             </Route>

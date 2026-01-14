@@ -27,6 +27,80 @@
       cursor: pointer;
       color: $primary-color;
     }
+
+    .account-selector {
+      position: relative;
+
+      .account-selector-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        background: $bg-secondary;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: $font-size-base;
+        color: $text-primary;
+        transition: 0.2s;
+
+        &:hover {
+          background: $bg-primary;
+        }
+
+        .account-label {
+          color: $text-secondary;
+        }
+
+        .account-name {
+          font-weight: 600;
+        }
+
+        .dropdown-arrow {
+          font-size: 12px;
+          transition: transform 0.2s;
+        }
+      }
+
+      .account-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin-top: 8px;
+        background: $bg-secondary;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        // box-shadow: $shadow-md;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+
+        .account-option {
+          padding: 10px 12px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+
+          &:hover {
+            background: $bg-primary;
+          }
+
+          &.selected {
+            background: $bg-primary;
+          }
+
+          .account-option-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+          }
+
+          .account-option-id {
+            font-size: $font-size-sm;
+            color: $text-secondary;
+          }
+        }
+      }
+    }
   }
 
   .topbar-right {

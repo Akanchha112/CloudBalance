@@ -85,7 +85,7 @@ export const Login = () => {
           error={errors.password}
         />
 
-        <p className="forgot-link">Forgot Password?</p>
+      
 
         <button onClick={handleClick}>LOGIN</button>
       </div>

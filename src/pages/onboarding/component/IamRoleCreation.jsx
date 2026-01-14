@@ -3,138 +3,138 @@ import IndexPointer from "./IndexPointer.jsx";
 import ContentCopyTwoToneIcon from "@mui/icons-material/ContentCopyTwoTone";
 import { Data } from "./CustomerTrustPolicy.js";
 import img from "../../../assets/onbording/createiam.png";
-// import Input from "../../user/createUser/component/Input.jsx";
 import Input from "../../../components/Input/Input.jsx";
 import { toast } from "react-toastify";
 
-const IamRoleCreation = ({account,setAccount}) => {
+import "./IamRoleCreation.scss";
+
+const IamRoleCreation = ({ account, setAccount }) => {
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
-    toast.success("text copied")
+    toast.success("Text copied");
   };
 
-  //------------------handler---------------------//
-  const handleChange =(e) =>{
-    const {name, value} = e.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setAccount({
       ...account,
       [name]: value,
-    })    
-  }
-
+    });
+  };
 
   return (
-    <div id="accountCreation">
-      <div className="flex flex-col gap-3">
-        <h1 className="text-2xl font-bold">Create an IAM Role</h1>
-        <h3 className="text-sm">Create an IAM Role by following these steps</h3>
-        <div className="border rounded-xl p-7.5 bg-white shadow-2xl flex flex-col gap-5 p">
-          {/* point 1 */}
-          <div className="flex gap-4">
+    <div className="iam-role" id="accountCreation">
+      <div className="iam-role__container">
+        <h1 className="iam-role__title">Create an IAM Role</h1>
+        <h3 className="iam-role__subtitle">
+          Create an IAM Role by following these steps
+        </h3>
+
+        <div className="iam-role__card">
+          {/* Step 1 */}
+          <div className="iam-role__step">
             <IndexPointer num={1} />
-            <p className="flex">
-              Log into AWS account & &nbsp; Create an IAM Role.
-            </p>
+            <p>Log into AWS account &amp; create an IAM Role.</p>
           </div>
-          {/* point 2 */}
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-4">
+
+          {/* Step 2 */}
+          <div className="iam-role__block">
+            <div className="iam-role__step">
               <IndexPointer num={2} />
-              In theTrusted entity typesection, selectCustom trust
-              policy.Replace the prefilled policy with the policy provided below -
+              <p>
+                In the Trusted entity type section, select Custom trust policy.
+                Replace the prefilled policy with the policy provided below:
+              </p>
             </div>
 
-            <div className=" ">
-              <pre className="border flex text-sm text-primary border-black/20 p-2 rounded-2xl h-50 overflow-auto relative justify-between">
-                {Data}
-                <button onClick={()=>copyToClipboard(Data)} className="border sticky top-0 right-0 border-black/20 h-fit p-1 rounded-md hover:bg-primary hover:text-white">
-                  <ContentCopyTwoToneIcon className=" rounded-md transition delay-50 ease-in-out " />
-                </button>
-              </pre>
-            </div>
+            <pre className="iam-role__policy">
+              {Data}
+              <button
+                className="iam-role__copy-btn"
+                onClick={() => copyToClipboard(Data)}
+              >
+                <ContentCopyTwoToneIcon />
+              </button>
+            </pre>
 
-            {/* point 3 */}
-            <div className="flex gap-4">
+            {/* Step 3 */}
+            <div className="iam-role__step">
               <IndexPointer num={3} />
               <p>
-                Click on <b>Next</b> to go to the <i>Add permissions page</i>.
-                We would not be adding any permissions for now. Click on{" "}
-                <b>Next</b>.
+                Click <b>Next</b> to go to the <i>Add permissions</i> page.
+                Skip permissions and click <b>Next</b>.
               </p>
             </div>
 
-            {/* point 4 */}
-            <div className="flex gap-4">
+            {/* Step 4 */}
+            <div className="iam-role__step">
               <IndexPointer num={4} />
               <p>
-                In the <i>Role name</i> field, enter the below-mentioned role
-                name and click on <b>Create Role -</b>
+                Enter the following role name and click <b>Create role</b>.
               </p>
             </div>
-            <div className="relative max-w-md ">
+
+            <div className="iam-role__readonly">
               <input
                 value="CK-Tuner-Role-dev2"
                 readOnly
-                className="w-full border border-black/20 rounded-md px-3 py-2 pr-10 text-primary bg-gray-50"
               />
               <button
                 onClick={() => copyToClipboard("CK-Tuner-Role-dev2")}
-                className="absolute right-2 p-1.5 rounded"
-                title="Copy role name"
               >
-                <div className="border border-black/20 h-fit p-1 rounded-md text-primary hover:bg-primary hover:text-white">
-                  <ContentCopyTwoToneIcon className=" rounded-md transition delay-50 ease-in-out " />
-                </div>
+                <ContentCopyTwoToneIcon />
               </button>
             </div>
 
-            {/* point 5 */}
-            <div className="flex gap-3">
+            {/* Step 5 */}
+            <div className="iam-role__step">
               <IndexPointer num={5} />
               <p>
-                Go to the newly created IAM Role and copy the <b>Role ARN</b> –
+                Go to the newly created role and copy the <b>Role ARN</b>.
               </p>
             </div>
 
-            <div className="border rounded-md overflow-hidden bg-gray-50">
-              <img
-                src={img}
-                alt="IAM Role ARN Screenshot"
-                className="w-full object-contain"
+            <div className="iam-role__image">
+              <img src={img} alt="IAM Role ARN Screenshot" />
+            </div>
+
+            {/* Step 6 */}
+            <div className="iam-role__step iam-role__step--highlight">
+              <IndexPointer num={6} />
+              <b>Paste the copied Role ARN below</b>
+            </div>
+
+            <div className="iam-role__inputs">
+              <Input
+                label="IAM Role ARN"
+                name="arn"
+                value={account.arn}
+                onChange={handleChange}
+                placeholder="Paste ARN"
+                required
+                // error={!account.arn && "IAM Role ARN is required"}
+              />
+
+              <Input
+                label="Account ID"
+                type="Number"
+                name="id"
+                value={account.id}
+                onChange={handleChange}
+                placeholder="Enter Account ID"
+                required
+                // error={!account.id && "Account ID is required"}
               />
             </div>
 
-            {/* point 6 */}
-            <div className="flex gap-3 items-center">
-              <IndexPointer num={6} />
-              <b className="text-lg">Paste the copied Role ARN below-</b>
-            </div>
-            <div className="flex gap-6 ">
-              <Input 
-                label="IAM Role ARN"
-                type="text"
-                name="arn"
-                placeholder="Paste ARN"
-                value={account.arn}
-                onChange={handleChange}
-              />
-              <Input 
-                label="Account ID"
-                type="text"
-                name="id"
-                placeholder="Enter Account ID"
-                value={account.id}
-                onChange={handleChange}
-                readOnly={false}
-              />
-            </div>
-            <Input 
+            <Input
               label="Account Name"
-              type="text"
               name="name"
-              placeholder="Enter Account Name"
               value={account.name}
               onChange={handleChange}
+              placeholder="Enter Account Name"
+              required
+              // error={!account.name && "Account Name is required"}
             />
           </div>
         </div>

@@ -12,6 +12,7 @@
   flex-direction: column;
   border-right: 1px solid $border-light;
   overflow-y: auto;
+  transition: width 0.3s;
   @include scrollbar;
 
   .sidebar-logo {
@@ -22,6 +23,17 @@
       font-size: $font-size-xl;
       color: $primary-color;
       font-weight: 600;
+    }
+  }
+  &.collapsed {
+    width: 60px;
+
+    .sidebar-text {
+      display: none;
+    }
+
+    .sidebar-logo h2 {
+      display: none;
     }
   }
 

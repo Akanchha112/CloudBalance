@@ -1,16 +1,17 @@
 import clsx from "clsx";
 import React from "react";
+import "./OnboardingButton.scss";
 
 const OnboardingButton = ({ label, disabled = false, name, clickFunction }) => {
   return (
     <button
-      disabled={disabled}
+      type="button"
       name={name}
+      disabled={disabled}
       onClick={clickFunction}
       className={clsx(
-        "bg-primary h-10 w-20 rounded-md text-white transition-all duration-150",
-        !disabled && "hover:cursor-pointer hover:shadow-xl",
-        disabled && "bg-gray-400 cursor-not-allowed opacity-70"
+        "onboarding-button",
+        disabled && "onboarding-button--disabled"
       )}
     >
       {label}

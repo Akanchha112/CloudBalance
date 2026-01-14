@@ -1,0 +1,218 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+
+.cost-explorer {
+  padding: 24px;
+  background: #f5f7fa;
+  min-height: 100vh;
+
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      margin: 0 0 8px 0;
+      color: #333;
+    }
+
+    p {
+      margin: 0;
+      color: #666;
+    }
+  }
+
+  .page-header {
+    margin-bottom: 24px;
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  .controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+
+    .controls-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .control-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        label {
+          font-size: 14px;
+          font-weight: 500;
+          color: #333;
+        }
+
+        .group-by-select {
+          padding: 8px 12px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          font-size: 14px;
+          background: white;
+          cursor: pointer;
+          min-width: 180px;
+
+          &:focus {
+            outline: none;
+            border-color: #4F81BC;
+            box-shadow: 0 0 0 3px rgba(79, 129, 188, 0.1);
+          }
+        }
+      }
+    }
+
+    .controls-right {
+      .filters-toggle-btn {
+        padding: 8px 16px;
+        background: #4F81BC;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background: #3d6a9e;
+        }
+
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .chart-controls {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    background: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+
+    .date-range-picker {
+      display: flex;
+      align-items: center;
+    //   margin-left: 14px;
+      gap: 8px;
+
+      input[type="date"] {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+          border-color: #4F81BC;
+          box-shadow: 0 0 0 3px rgba(79, 129, 188, 0.1);
+        }
+      }
+
+      .separator {
+        color: #666;
+        font-weight: 500;
+      }
+    }
+
+    .view-toggle,
+    .chart-type-toggle {
+      display: flex;
+      gap: 0;
+      margin-left: 28px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        background: white;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s;
+        border-right: 1px solid #ddd;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &:hover {
+          background: #f0f2f5;
+        }
+
+        &.active {
+          background: #4F81BC;
+          color: white;
+        }
+      }
+    }
+
+    .chart-type-toggle button {
+      padding: 8px 12px;
+      font-size: 18px;
+    }
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+    transition: grid-template-columns 0.3s ease;
+
+    &.filters-open {
+      grid-template-columns: 1fr 320px;
+    }
+
+    .chart-section {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      min-height: 400px;
+    }
+  }
+
+  .table-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+}

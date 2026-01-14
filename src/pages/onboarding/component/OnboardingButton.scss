@@ -1,0 +1,37 @@
+@use "../../../styles/variables" as *;
+
+.onboarding-button {
+  margin: 10px 20px 0 0;
+  height: 40px; // h-10
+  width: 84px;  // w-20
+
+  background-color: $bg-secondary;
+  color: $primary-color;
+
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+
+  transition: $transition-base;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: $shadow-lg;
+    background-color: $primary-dark;
+    color:$bg-primary
+  }
+
+  &--disabled {
+    background-color: $secondary-color;
+    color: $bg-secondary;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+
+    &:hover {
+      background-color: $secondary-color;
+      box-shadow: none;
+    }
+  }
+}

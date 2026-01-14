@@ -1,89 +1,69 @@
-import React from 'react'
+import React from "react";
 import img1 from "../../../assets/onbording/addcust1.png";
 import img2 from "../../../assets/onbording/addcust2.png";
 import img3 from "../../../assets/onbording/addcust3.png";
-import IndexPointer from './IndexPointer';
+import IndexPointer from "./IndexPointer";
+import "./PolicyManagement.scss";
 
 const PolicyManagement = () => {
   return (
-    <div className="bg-white border rounded-lg p-6 space-y-6">
+    <div className="policy-management">
       {/* Step 1 */}
-      <div className="flex gap-3 flex-wrap">
-        <div className="flex gap-3">
-          {/* <span className="w-7 h-7 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold mr-2">
-            1
-          </span> */}
+      <div className="policy-management__step">
+        <div className="policy-management__content">
           <IndexPointer num={1} />
-          <p>
+          <p className="policy-management__text">
             Go to the{" "}
-            <a className="text-blue-600 font-medium hover:underline">
+            <a className="policy-management__link">
               CK-Tuner-Role
-            </a>
-            .
+            </a>.
           </p>
         </div>
-        <div className="border rounded-md overflow-hidden bg-gray-50">
-          <img
-            src={img1}
-            alt="Add CustomManaged Policies"
-            className="w-full object-contain"
-          />
+
+        <div className="policy-management__image">
+          <img src={img1} alt="Add Custom Managed Policies" />
         </div>
       </div>
 
       {/* Step 2 */}
-      <div className="flex gap-3 flex-wrap">
-        <div className="flex gap-3">
-          {/* <span className="w-7 h-7 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold mr-2">
-            2
-          </span> */}
+      <div className="policy-management__step">
+        <div className="policy-management__content">
           <IndexPointer num={2} />
-          <p>
-            In Permission policies, click on Add permissions {">"} Attach Policy
+          <p className="policy-management__text">
+            In Permission policies, click on Add permissions &gt; Attach Policy
           </p>
         </div>
-        <div className="border rounded-md overflow-hidden bg-gray-50">
-          <img
-            src={img2}
-            alt="Add CustomManaged Policies"
-            className="w-full object-contain"
-          />
+
+        <div className="policy-management__image">
+          <img src={img2} alt="Attach Policy" />
         </div>
       </div>
 
       {/* Step 3 */}
-      <div className="flex gap-3 flex-wrap">
-        <div className="flex gap-3">
-          {/* <span className="w-7 h-7 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold mr-2">
-            3
-          </span> */}
+      <div className="policy-management__step">
+        <div className="policy-management__content">
           <IndexPointer num={3} />
-          <p>
-            Filter by Type {">"} Customer managed then search for
-            cktuner-CostAuditPolicy, cktuner-SecAuditPolicy,
-            cktuner-TunerReadEssentials and select them.
+          <p className="policy-management__text">
+            Filter by Type &gt; Customer managed, then search and select
+            cktuner-CostAuditPolicy, cktuner-SecAuditPolicy, and
+            cktuner-TunerReadEssentials.
           </p>
         </div>
-        <div className="border rounded-md overflow-hidden bg-gray-50">
-          <img
-            src={img3}
-            alt="Add CustomManaged Policies"
-            className="w-full object-contain"
-          />
+
+        <div className="policy-management__image">
+          <img src={img3} alt="Select Policies" />
         </div>
       </div>
 
-      <div className="flex gap-3">
-        {/* <span className="w-7 h-7 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-semibold">
-          4
-        </span> */}
-          <IndexPointer num={4} />
-        <p>Now, click on Add permissions</p>
+      {/* Step 4 */}
+      <div className="policy-management__final-step">
+        <IndexPointer num={4} />
+        <p className="policy-management__text">
+          Now, click on Add permissions.
+        </p>
       </div>
-
-      {/* AWS Screenshot */}
     </div>
   );
-}
+};
 
-export default PolicyManagement
+export default PolicyManagement;
