@@ -1,46 +1,32 @@
+
 @import "../../styles/mixins";
 @import "../../styles/variables";
 
 .filters-panel {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - 250px);
-  animation: slideIn 0.3s ease;
-
-  @keyframes slideIn {
-    from {
-      transform: translateX(20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
+  height: 100%;
 
   .filters-header {
-    padding: 16px;
-    border-bottom: 1px solid #eee;
+    padding: $spacing-md;
+    border-bottom: 1px solid $border-light;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     h3 {
       margin: 0;
-      font-size: 18px;
+      font-size: $font-size-lg;
       font-weight: 600;
-      color: #333;
+      color: $text-primary;
     }
 
     .selected-badge {
-      background: #4F81BC;
+      background: $primary-color;
       color: white;
       padding: 4px 12px;
       border-radius: 12px;
-      font-size: 12px;
+      font-size: $font-size-xs;
       font-weight: 500;
     }
   }
@@ -48,66 +34,66 @@
   .filters-body {
     flex: 1;
     overflow-y: auto;
-    padding: 16px;
+    padding: $spacing-md;
 
     &::-webkit-scrollbar {
       width: 6px;
     }
 
     &::-webkit-scrollbar-track {
-      background: #f5f7fa;
+      background: $bg-secondary;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #ddd;
+      background: $border-color;
       border-radius: 3px;
 
       &:hover {
-        background: #bbb;
+        background: darken($border-color, 10%);
       }
     }
 
     .filter-group {
-      margin-bottom: 12px;
-      border: 1px solid #eee;
-      border-radius: 6px;
+      margin-bottom: $spacing-sm;
+      border: 1px solid $border-light;
+      border-radius: $border-radius;
       overflow: hidden;
 
       .filter-header {
-        padding: 12px;
-        background: #f8f9fa;
+        padding: $spacing-sm $spacing-md;
+        background: $bg-tertiary;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        transition: background-color 0.2s;
+        transition: $transition-base;
 
         &:hover {
-          background: #e9ecef;
+          background: darken($bg-tertiary, 3%);
         }
 
         .filter-label {
-          font-size: 14px;
+          font-size: $font-size-sm;
           font-weight: 500;
-          color: #333;
+          color: $text-primary;
         }
 
         .filter-header-right {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: $spacing-xs;
 
           .filter-count {
-            font-size: 12px;
-            color: #4F81BC;
-            background: #e3f2fd;
+            font-size: $font-size-xs;
+            color: $primary-color;
+            background: $sidebar-active;
             padding: 2px 8px;
             border-radius: 10px;
           }
 
           .arrow {
             font-size: 10px;
-            color: #666;
+            color: $text-secondary;
             transition: transform 0.2s;
 
             &.expanded {
@@ -118,52 +104,52 @@
       }
 
       .filter-content {
-        border-top: 1px solid #eee;
+        border-top: 1px solid $border-light;
         background: white;
 
         .filter-search {
-          padding: 12px;
-          border-bottom: 1px solid #eee;
+          padding: $spacing-sm;
+          border-bottom: 1px solid $border-light;
 
           input {
             width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 13px;
+            padding: $spacing-xs $spacing-sm;
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            font-size: $font-size-sm;
 
             &:focus {
               outline: none;
-              border-color: #4F81BC;
-              box-shadow: 0 0 0 3px rgba(79, 129, 188, 0.1);
+              border-color: $primary-color;
+              box-shadow: 0 0 0 3px rgba(91, 143, 249, 0.1);
             }
 
             &::placeholder {
-              color: #999;
+              color: $text-disabled;
             }
           }
         }
 
         .filter-loading {
-          padding: 24px;
+          padding: $spacing-lg;
           text-align: center;
-          color: #666;
-          font-size: 13px;
+          color: $text-secondary;
+          font-size: $font-size-sm;
         }
 
         .select-all-option {
-          padding: 12px;
-          border-bottom: 1px solid #eee;
-          background: #fafbfc;
+          padding: $spacing-sm;
+          border-bottom: 1px solid $border-light;
+          background: $bg-tertiary;
 
           label {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: $spacing-xs;
             cursor: pointer;
             font-weight: 500;
-            font-size: 13px;
-            color: #333;
+            font-size: $font-size-sm;
+            color: $text-primary;
 
             input[type="checkbox"] {
               cursor: pointer;
@@ -176,32 +162,32 @@
         .filter-options {
           max-height: 250px;
           overflow-y: auto;
-          padding: 8px;
+          padding: $spacing-xs;
 
           &::-webkit-scrollbar {
             width: 4px;
           }
 
           &::-webkit-scrollbar-track {
-            background: #f5f7fa;
+            background: $bg-secondary;
           }
 
           &::-webkit-scrollbar-thumb {
-            background: #ddd;
+            background: $border-color;
             border-radius: 2px;
           }
 
           .filter-option {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px;
-            border-radius: 4px;
+            gap: $spacing-xs;
+            padding: $spacing-xs;
+            border-radius: $border-radius-sm;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: $transition-base;
 
             &:hover {
-              background: #f8f9fa;
+              background: $bg-hover;
             }
 
             input[type="checkbox"] {
@@ -213,17 +199,17 @@
 
             .option-text {
               flex: 1;
-              font-size: 13px;
-              color: #333;
+              font-size: $font-size-sm;
+              color: $text-primary;
               word-break: break-word;
             }
           }
 
           .no-options {
-            padding: 24px;
+            padding: $spacing-lg;
             text-align: center;
-            color: #999;
-            font-size: 13px;
+            color: $text-disabled;
+            font-size: $font-size-sm;
           }
         }
       }
@@ -231,48 +217,48 @@
   }
 
   .filters-footer {
-    padding: 16px;
-    border-top: 1px solid #eee;
+    padding: $spacing-md;
+    border-top: 1px solid $border-light;
     display: flex;
-    gap: 8px;
+    gap: $spacing-xs;
     justify-content: flex-end;
 
     button {
-      padding: 8px 16px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 14px;
+      padding: $spacing-xs $spacing-md;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      font-size: $font-size-sm;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: $transition-base;
 
       &.btn-reset {
         background: white;
-        color: #dc3545;
-        border-color: #dc3545;
+        color: $danger-color;
+        border-color: $danger-color;
 
         &:hover {
-          background: #dc3545;
+          background: $danger-color;
           color: white;
         }
       }
 
       &.btn-close {
         background: white;
-        color: #666;
+        color: $text-secondary;
 
         &:hover {
-          background: #f0f2f5;
+          background: $bg-hover;
         }
       }
 
       &.btn-apply {
-        background: #4F81BC;
+        background: $primary-color;
         color: white;
-        border-color: #4F81BC;
+        border-color: $primary-color;
 
         &:hover {
-          background: #3d6a9e;
+          background: $primary-dark;
         }
       }
     }

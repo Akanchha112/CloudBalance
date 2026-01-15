@@ -12,8 +12,8 @@ api.interceptors.request.use(
     // Don't add Authorization header to auth endpoints
     if (
       !config.url.includes("/login") &&
-      !config.url.includes("/refresh") &&
-      !config.url.includes("/logout")
+      !config.url.includes("/refresh") 
+      // !config.url.includes("/logout")
     ) {
       const accessToken = localStorage.getItem("accessToken");
       if (accessToken) {
@@ -78,7 +78,7 @@ api.interceptors.response.use(
 
 const forceLogout = () => {
   localStorage.clear();
-  window.location.href = "/login";
+  window.location.href = "/";
 };
 
 export default api;

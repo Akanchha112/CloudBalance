@@ -5,7 +5,7 @@ const CostTable = ({ data, loading, groupBy }) => {
   const tableData = useMemo(() => {
     if (!data || data.length === 0) return null;
 
-    console.log("Processing table data:", data);
+    // console.log("Processing table data:", data);
 
     // Group data by groupBy value and month
     const rowsMap = {};
@@ -35,7 +35,7 @@ const CostTable = ({ data, loading, groupBy }) => {
     const months = Array.from(monthsSet).sort((a, b) => new Date(a) - new Date(b));
     const rows = Object.values(rowsMap).sort((a, b) => b.total - a.total);
 
-    console.log("Processed table - Months:", months, "Rows:", rows.length);
+    // console.log("Processed table - Months:", months, "Rows:", rows.length);
 
     return { months, rows };
   }, [data, groupBy]);

@@ -16,7 +16,7 @@ const ErrorFallback = () => {
           This page is temporarily unavailable. Please try again in a moment.
         </p>
 
-        <a href="/app/users" className="error-btn">
+        <a href="/app/cost-explorer" className="error-btn">
           Return Home
         </a>
       </div>

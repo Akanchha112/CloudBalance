@@ -23,7 +23,7 @@ export default function RoleProtectedRoute({ children, allowedRoles }) {
   });
 
   if (!isAllowed) {
-    return <Navigate to="/app" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return children;

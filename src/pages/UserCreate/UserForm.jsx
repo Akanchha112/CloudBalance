@@ -32,6 +32,7 @@ const UserForm = ({ onSubmit, onCancel, isEdit = false, initialData = null }) =>
         setAccounts(response.data.data || response.data || []);
       } catch (error) {
         console.error('Error fetching accounts:', error);
+        toast.error("Error fetching accounts: "+(error?.response?.data?.message || error.message))
         setAccounts([]);
       } finally {
         setLoadingAccounts(false);
@@ -374,14 +375,7 @@ const UserForm = ({ onSubmit, onCancel, isEdit = false, initialData = null }) =>
           </div>
         )}
 
-        <div className="form-row">
-          <Toggle
-            label="Enable search configuration for Customer"
-            name="enableSearchConfig"
-            checked={formData.enableSearchConfig}
-            onChange={handleChange}
-          />
-        </div>
+        
       </div>
 
       <div className="form-actions">

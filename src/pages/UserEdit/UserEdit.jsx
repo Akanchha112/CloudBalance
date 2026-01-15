@@ -25,7 +25,7 @@ export const UserEdit = () => {
       setUserData(response.data);
     } catch (error) {
       console.error('Error fetching user:', error);
-      toast.error('Failed to fetch user data');
+      toast.error("Failed to fetch user data: "+(error?.response?.data?.message || error.message))
       navigate('/app/users');
     } finally {
       setFetchingUser(false);
@@ -47,9 +47,8 @@ export const UserEdit = () => {
         accountIds: formData.accountIds,
         enableSearchConfig: formData.enableSearchConfig
       };
-      console.log("payload",payload);
+      // console.log("payload",payload);
       
-
       await updateUser(id, payload);
       toast.success("User updated successfully");
       navigate("/app/users");

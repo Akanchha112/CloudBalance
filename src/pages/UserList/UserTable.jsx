@@ -13,10 +13,14 @@ import {
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditIcon from '@mui/icons-material/Edit';
+import { usePermissions } from '../../hooks/usePermissions';
 
-const UserTable = ({ users, onRefresh, handleEdit }) => {
-  const [orderBy, setOrderBy] = useState('firstName');
-  const [order, setOrder] = useState('asc');
+const UserTable = ({ users, onRefresh, handleEdit, onSort, order, orderBy }) => {
+  // const [orderBy, setOrderBy] = useState('firstName');
+  // const [order, setOrder] = useState('asc');
+  const { hasPermission } = usePermissions();
+
+  const canEditUser = hasPermission("EDIT");
 
   const handleSort = (property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -41,7 +45,7 @@ const UserTable = ({ users, onRefresh, handleEdit }) => {
               <TableSortLabel
                 active={orderBy === 'firstName'}
                 direction={orderBy === 'firstName' ? order : 'asc'}
-                onClick={() => handleSort('firstName')}
+                onClick={() => onSort('firstName')}
               >
                 First Name
               </TableSortLabel>
@@ -50,16 +54,16 @@ const UserTable = ({ users, onRefresh, handleEdit }) => {
               <TableSortLabel
                 active={orderBy === 'lastName'}
                 direction={orderBy === 'lastName' ? order : 'asc'}
-                onClick={() => handleSort('lastName')}
+                onClick={() => onSort('lastName')}
               >
                 Last Name
               </TableSortLabel>
             </TableCell>
             <TableCell>
               <TableSortLabel
-                active={orderBy === 'email'}
-                direction={orderBy === 'email' ? order : 'asc'}
-                onClick={() => handleSort('email')}
+                active={orderBy === 'emailId'}
+                direction={orderBy === 'emailId' ? order : 'asc'}
+                onClick={() => onSort('emailId')}
               >
                 Email ID
               </TableSortLabel>
@@ -83,7 +87,17 @@ const UserTable = ({ users, onRefresh, handleEdit }) => {
                   {user.role}
                 </div>
               </TableCell>
-              <TableCell>{user.lastLogin}</TableCell>
+              <TableCell>
+                {user.lastLogin
+                  ? new Date(user.lastLogin).toLocaleString('en-IN', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })
+                  : '—'}
+              </TableCell>
               <TableCell align="center">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                   {/* <Switch
@@ -92,17 +106,18 @@ const UserTable = ({ users, onRefresh, handleEdit }) => {
                     size="small"
                     color="primary"
                   /> */}
-                  <IconButton 
-                    size="small" 
+                  <IconButton
+                    size="small"
                     color="primary"
                     onClick={() => handleEdit(user.id)}
+                    disabled={!canEditUser}
                   >
                     <EditIcon fontSize="small" />
                   </IconButton>
                   {/* <IconButton size="small">
                     <MoreVertIcon fontSize="small" />
                   </IconButton> */}
-                  {user.active && (
+                  {/* {user.active && (
                     <button
                       style={{
                         padding: '4px 12px',
@@ -116,7 +131,7 @@ const UserTable = ({ users, onRefresh, handleEdit }) => {
                     >
                       Resend Link
                     </button>
-                  )}
+                  )} */}
                 </div>
               </TableCell>
             </TableRow>

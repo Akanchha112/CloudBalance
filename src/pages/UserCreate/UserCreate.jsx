@@ -27,9 +27,10 @@ export const UserCreate = () => {
         enableSearchConfig: formData.enableSearchConfig
       };
 
-      await addUser(payload);
-      toast.success("User created successfully");
-      navigate("/app/users");
+      const res=await addUser(payload);
+        toast.success("User created successfully");
+        navigate("/app/users");
+      
     } catch (error) {
       console.error("Error:", error?.response?.data || "Failed to create user");
       toast.error("Failed to create user: " + (error?.response?.data?.message || error.message));

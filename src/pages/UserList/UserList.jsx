@@ -5,14 +5,17 @@ import './UserList.scss';
 import { getUser } from '../../utils/UserApiUtil';
 import { usePermissions } from '../../hooks/usePermissions';
 import { PermissionGuard } from '../../components/PermissionGuard';
-import { FallingLines } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 
 export const UserList = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState('active');
   const { canCreate, canEdit } = usePermissions();
+  const [originalUsers, setOriginalUsers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [orderBy, setOrderBy] = useState(null);
+  const [order, setOrder] = useState('asc');
 
   useEffect(() => {
     fetchUsers();
@@ -22,16 +25,13 @@ export const UserList = () => {
     try {
       setLoading(true);
       const res = await getUser();
-       setTimeout(()=>{
-        setUsers(res.data);
-        setLoading(false);
-      },2000);
-      
-     
-    } catch (err) {
+      setOriginalUsers(res.data);
+      setUsers(res.data);
+    } catch (error) {
+      toast.error("Failed to fetch user: " + (error?.response?.data?.message || error.message))
       console.error("Failed to fetch users", err);
-    }finally{
-      
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,23 +51,44 @@ export const UserList = () => {
     navigate(`/app/users/${userId}/edit`);
   };
 
-  const handleResetFilters = () => {
-    setFilter('active');
+
+  const handleSort = (property) => {
+    const isAsc = orderBy === property && order === 'asc';
+    const newOrder = isAsc ? 'desc' : 'asc';
+
+    const sortedUsers = [...users].sort((a, b) => {
+      if (!a[property]) return 1;
+      if (!b[property]) return -1;
+
+      return newOrder === 'asc'
+        ? a[property].localeCompare(b[property])
+        : b[property].localeCompare(a[property]);
+    });
+
+    setUsers(sortedUsers);
+    setOrder(newOrder);
+    setOrderBy(property);
   };
 
-  const filteredUsers = users.filter(user => {
-    if (filter === 'all') return true;
-    return user;
-  });
+  const handleResetFilters = () => {
+    setUsers(originalUsers); // ⬅️ restore original order
+    setOrderBy(null);
+    setOrder('asc');
+  };
+
+  // const filteredUsers = users.filter(user => {
+  //   if (filter === 'all') return true;
+  //   return user;
+  // });
 
   return (
     <div className="users-list-page">
       <div className="page-header">
         <h1>Users</h1>
       </div>
-      
+
       <div className="page-actions">
-        {/* Only show Add button if user has CREATE permission */}
+        
         <PermissionGuard action="CREATE">
           <button className="btn-primary" onClick={handleAddUser} disabled={loading}>
             Add New User
@@ -78,36 +99,23 @@ export const UserList = () => {
           Reset Filters
         </button>
 
-        {/* <div className="filter-group">
-          <label>Two-factor Authentication</label>
-          <div className="filter-buttons">
-            <button 
-              className={`filter-btn ${filter === 'active' ? 'active' : ''}`}
-              onClick={() => setFilter('active')}
-            >
-              Active ({users.length})
-            </button>
-            <button 
-              className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-              onClick={() => setFilter('all')}
-            >
-              All ({users.length})
-            </button>
-          </div>
-        </div> */}
+
       </div>
 
       {loading ? (
         <div className="loader-wrapper">
-          <FallingLines color="#5B8FF9" />
+          <Oval color="#5B8FF9" secondaryColor="#E8E8E8" height="40"
+            width="40" />
         </div>
       ) : (
-      <UserTable 
-        users={filteredUsers} 
-        onRefresh={fetchUsers} 
-        handleEdit={handleEditUser}
-        canEdit={canEdit()}
-      />
+        <UserTable
+          users={users}
+          onRefresh={fetchUsers}
+          handleEdit={handleEditUser}
+          onSort={handleSort}
+          order={order}
+          orderBy={orderBy}
+        />
       )}
     </div>
   );

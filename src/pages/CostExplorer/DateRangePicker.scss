@@ -1,0 +1,166 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.date-picker-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .date-picker-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.2s ease;
+  }
+
+  .date-picker-content {
+    position: relative;
+    background: white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    width: 400px;
+    max-width: 90%;
+    animation: slideUp 0.3s ease;
+
+    .date-picker-header {
+      padding: $spacing-md;
+      border-bottom: 1px solid $border-light;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h3 {
+        margin: 0;
+        font-size: $font-size-lg;
+        font-weight: 600;
+        color: $text-primary;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: $text-secondary;
+        cursor: pointer;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $border-radius;
+        transition: $transition-base;
+
+        &:hover {
+          background: $bg-hover;
+        }
+      }
+    }
+
+    .date-picker-body {
+      padding: $spacing-lg;
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+
+      .date-input-group {
+        flex: 1;
+
+        label {
+          display: block;
+          margin-bottom: $spacing-xs;
+          font-size: $font-size-sm;
+          font-weight: 500;
+          color: $text-primary;
+        }
+
+        input[type="date"] {
+          width: 100%;
+          padding: $spacing-sm;
+          border: 1px solid $border-color;
+          border-radius: $border-radius;
+          font-size: $font-size-sm;
+          transition: $transition-base;
+
+          &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 3px rgba(91, 143, 249, 0.1);
+          }
+        }
+      }
+
+      .date-separator {
+        margin-top: 24px;
+        color: $text-secondary;
+        font-weight: 500;
+      }
+    }
+
+    .date-picker-footer {
+      padding: $spacing-md;
+      border-top: 1px solid $border-light;
+      display: flex;
+      justify-content: flex-end;
+      gap: $spacing-sm;
+
+      button {
+        padding: $spacing-xs $spacing-md;
+        border-radius: $border-radius;
+        font-size: $font-size-sm;
+        font-weight: 500;
+        cursor: pointer;
+        transition: $transition-base;
+
+        &.btn-cancel {
+          background: white;
+          border: 1px solid $border-color;
+          color: $text-primary;
+
+          &:hover {
+            background: $bg-hover;
+          }
+        }
+
+        &.btn-apply {
+          background: $primary-color;
+          border: 1px solid $primary-color;
+          color: white;
+
+          &:hover {
+            background: $primary-dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

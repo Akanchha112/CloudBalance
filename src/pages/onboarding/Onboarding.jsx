@@ -8,12 +8,16 @@ import { useNavigate } from "react-router";
 // import Loading from "../../component/loading/Loading";
 import { toast } from "react-toastify";
 import { createAccount } from "../../utils/AccountApiUtil";
+import { usePermissions } from "../../hooks/usePermissions";
 
 const Onboarding = () => {
   const [page, setPage] = useState(1);
   // const {loading, createAccount} = useAccountCreation();
   const[account, setAccount] = useState({});
   const navigate = useNavigate();
+  const { hasPermission } = usePermissions();
+
+  const canOnboard = hasPermission("ONBOARD");
 
   const changePage = (e) => {
     const { name } = e.target;
@@ -35,8 +39,6 @@ const Onboarding = () => {
   };
 
   const handleSubmit = async() => {
-      console.log("account",account);
-      
       const response = await createAccount({
         accountId: account.id,
         accountName: account.name,
@@ -91,6 +93,7 @@ const Onboarding = () => {
             label={"Submit"}
             name={"submit"}
             clickFunction={handleSubmit}
+            disabled={!canOnboard}
           />
         )}
       </div>

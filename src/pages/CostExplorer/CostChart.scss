@@ -12,33 +12,33 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #666;
+    color: $text-secondary;
 
     .spinner {
       width: 40px;
       height: 40px;
-      border: 4px solid #eee;
-      border-top-color: #4F81BC;
+      border: 4px solid $border-light;
+      border-top-color: $primary-color;
       border-radius: 50%;
       animation: spin 1s linear infinite;
-      margin-bottom: 16px;
+      margin-bottom: $spacing-md;
     }
 
     .empty-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-      opacity: 0.5;
+      margin-bottom: $spacing-md;
+      opacity: 0.3;
     }
 
     h3 {
-      margin: 0 0 8px 0;
-      font-size: 18px;
-      color: #333;
+      margin: 0 0 $spacing-xs 0;
+      font-size: $font-size-lg;
+      color: $text-primary;
     }
 
     p {
       margin: 0;
-      font-size: 14px;
+      font-size: $font-size-sm;
+      color: $text-secondary;
     }
   }
 }
@@ -48,4 +48,3 @@
     transform: rotate(360deg);
   }
 }
-

@@ -7,7 +7,6 @@ export const ROLE_PERMISSIONS = {
       "/app/users/:id/edit",
       "/app/account-onboard",
       "/app/cost-explorer",
-      "/app/module-control",
     ],
     actions: ["CREATE", "EDIT", "ONBOARD"],
   },
@@ -17,7 +16,6 @@ export const ROLE_PERMISSIONS = {
       "/app/users",
       "/app/account-onboard",
       "/app/cost-explorer",
-      "/app/module-control",
     ],
     actions: [],
   },
@@ -25,7 +23,6 @@ export const ROLE_PERMISSIONS = {
   CUSTOMER: {
     routes: [
       "/app/cost-explorer",
-      "/app/module-control",
     ],
     actions: [],
   },

@@ -8,7 +8,7 @@ export const getAccountsByRole = async () => {
     const response = await api.get("/api/accounts", {
       headers: getAuthHeaders()
     });
-    return response;
+    return response.data;
 
   } catch (error) {
     console.error("Failed to fetch accounts:", error);

@@ -6,6 +6,7 @@ import { loginCall } from "../../utils/LoginApiUtil";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../store/authSlice";
 import "./Login.scss";
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -39,16 +40,17 @@ export const Login = () => {
       const res = await loginCall(email, password);
       localStorage.setItem("isAuthenticated",true);
       localStorage.setItem("accessToken",res.data.accessToken);
-      console.log("login res: ", res.data);
+      // console.log("login res: ", res.data);
       
       dispatch(setAuth({
         user: res.data.firstName,
         role: res.data.role
       }));
 
-      navigate("/app/users");
-    } catch {
+      navigate("/app/cost-explorer");
+    } catch(error) {
       setErrors("Invalid credentials");
+      toast.error("Login Failed: "+(error?.response?.data?.message || error.message))
     }
   };
 

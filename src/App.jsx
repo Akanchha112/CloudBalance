@@ -58,7 +58,7 @@ function App() {
                  </RoleProtectedRoute>
                 } />
 
-              <Route path="cost-explorer" element={
+              <Route path="cost-explorer" index element={
                 <RoleProtectedRoute allowedRoles={[ROLES.ADMIN, ROLES.READONLY,ROLES.CUSTOMER]}>
                    <CostExplorer/>
                  </RoleProtectedRoute>}>
